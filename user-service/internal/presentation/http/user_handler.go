@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gene-qxsi/Blog-user/internal/domain"
-	"github.com/gene-qxsi/Blog-user/internal/presentation/dto"
+	"github.com/gene-qxsi/Blog/Blog-user/internal/domain"
+	"github.com/gene-qxsi/Blog/Blog-user/internal/presentation/dto"
 	"github.com/gin-gonic/gin"
 )
 
