@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gene-qxsi/Blog-user/config"
-	app "github.com/gene-qxsi/Blog-user/internal"
+	"github.com/gene-qxsi/Blog/user-service/config"
+	app "github.com/gene-qxsi/Blog/user-service/internal"
 )
 
 const (

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/gene-qxsi/Blog-user/config"
+	"github.com/gene-qxsi/Blog/user-service/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

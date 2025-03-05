@@ -3,10 +3,10 @@ package internal
 import (
 	"fmt"
 
-	"github.com/gene-qxsi/Blog-user/config"
-	"github.com/gene-qxsi/Blog-user/internal/application/service"
-	"github.com/gene-qxsi/Blog-user/internal/infrastructure/postgres"
-	httpH "github.com/gene-qxsi/Blog-user/internal/presentation/http"
+	"github.com/gene-qxsi/Blog/user-service/config"
+	"github.com/gene-qxsi/Blog/user-service/internal/application/service"
+	"github.com/gene-qxsi/Blog/user-service/internal/infrastructure/postgres"
+	httpH "github.com/gene-qxsi/Blog/user-service/internal/presentation/http"
 	"github.com/gin-gonic/gin"
 )
 

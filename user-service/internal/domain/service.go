@@ -3,7 +3,7 @@ package domain
 import (
 	"context"
 
-	"github.com/gene-qxsi/Blog-user/internal/presentation/dto"
+	"github.com/gene-qxsi/Blog/user-service/internal/presentation/dto"
 )
 
 type UserService interface {

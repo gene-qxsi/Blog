@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/gene-qxsi/Blog-user/internal/domain"
+	"github.com/gene-qxsi/Blog/user-service/internal/domain"
 	"gorm.io/gorm"
 )
 
