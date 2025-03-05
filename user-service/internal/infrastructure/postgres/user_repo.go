@@ -57,6 +57,26 @@ func (r UserRepo) GetUser(ctx context.Context, id int) (*domain.User, error) {
 	return user, nil
 }
 
+func (r UserRepo) GetUsers(ctx context.Context) ([]domain.User, error) {
+	// const op = "user-service>internal>infrastructure>http>user_create.go>CreateUser()"
+
+	var usersDB []userDB
+	if err := r.db.WithContext(ctx).Debug().Find(&usersDB).Error; err != nil {
+		return nil, err
+	}
+
+	var users []domain.User
+	for _, userDB := range usersDB {
+		user, err := domain.NewUser(userDB.ID, userDB.Email, userDB.Password)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, *user)
+	}
+
+	return users, nil
+}
+
 func (r UserRepo) DeleteUser(ctx context.Context, id int) error {
 	// const op = "user-service>internal>infrastructure>http>user_create.go>DeleteUser()"
 

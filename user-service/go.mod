@@ -3,8 +3,10 @@ module github.com/gene-qxsi/Blog/user-service
 go 1.23.4
 
 require (
+	github.com/gene-qxsi/Blog-api v1.0.1
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/viper v1.19.0
+	google.golang.org/grpc v1.71.0
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
@@ -55,6 +57,7 @@ require (
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f // indirect
 	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

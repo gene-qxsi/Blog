@@ -60,6 +60,27 @@ func (h *UserHandler) GetUser(c *gin.Context) {
 	})
 }
 
+func (h *UserHandler) GetUsers(c *gin.Context) {
+	const op = "user-service>internal>presentation>handlers>http>user_create.go>GetUsers()"
+
+	users, err := h.srv.GetUsers(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid response from GetUser. op: " + op})
+		return
+	}
+
+	var dtos []dto.UserResponse
+	for _, user := range users {
+		dtos = append(dtos, dto.UserResponse{
+			ID:       user.ID(),
+			Email:    user.Email(),
+			Password: user.Password(),
+		})
+	}
+
+	c.JSON(http.StatusOK, dtos)
+}
+
 func (h *UserHandler) DeleteUser(c *gin.Context) {
 	const op = "user-service>internal>presentation>handlers>http>user_create.go>DeleteUser()"
 
@@ -115,6 +136,7 @@ func (h *UserHandler) RegisterUserRoutes(r *gin.RouterGroup) {
 	userGroup := r.Group("/users")
 	{
 		userGroup.GET("/:id", h.GetUser)
+		userGroup.GET("/", h.GetUsers)
 		userGroup.POST("/", h.CreateUser)
 		userGroup.DELETE("/:id", h.DeleteUser)
 		userGroup.PUT("/", h.UpdateUser)

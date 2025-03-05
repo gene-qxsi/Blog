@@ -6,26 +6,29 @@ import (
 	"github.com/gene-qxsi/Blog/user-service/config"
 	"github.com/gene-qxsi/Blog/user-service/internal/application/service"
 	"github.com/gene-qxsi/Blog/user-service/internal/infrastructure/postgres"
-	httpH "github.com/gene-qxsi/Blog/user-service/internal/presentation/http"
-	"github.com/gin-gonic/gin"
+	"github.com/gene-qxsi/Blog/user-service/internal/presentation/grpc"
+	"github.com/gene-qxsi/Blog/user-service/internal/presentation/http"
 )
 
-func Run(config config.Config) (*gin.Engine, error) {
+func Run(config config.Config) error {
 	postgresDB, err := postgres.NewPostgresDB(config.Postgres)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка запуска postgreSQL: %w", err)
+		return fmt.Errorf("ошибка запуска postgreSQL: %w", err)
 	}
 
 	userRepo := postgres.NewUserPostgresRepo(postgresDB)
 	userService := service.NewUserService(userRepo)
 
-	userHandler := httpH.NewUserHandler(userService)
+	userHandlerHTTP := http.NewUserHandler(userService)
+	userHandlerGRPC := grpc.NewUserHandler(userService)
 
-	router := gin.Default()
-	v1 := router.Group("/api/v1")
-	{
-		userHandler.RegisterUserRoutes(v1)
-	}
+	http.RunHTTPServer(config, &http.Handlers{
+		UserHandler: userHandlerHTTP,
+	})
 
-	return router, nil
+	grpc.RunGRPCServer(config, &grpc.Handlers{
+		UserHandler: userHandlerGRPC,
+	})
+
+	return nil
 }

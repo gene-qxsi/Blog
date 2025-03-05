@@ -54,3 +54,13 @@ func (s UserService) UpdateUser(ctx context.Context, userID int, req dto.UserReq
 
 	return s.repo.UpdateUser(ctx, *user)
 }
+
+func (s UserService) GetUsers(ctx context.Context) ([]domain.User, error) {
+	// const op = "user-service>internal>application>service>user_service.go>GetUserByID()"
+	users, err := s.repo.GetUsers(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return users, nil
+}

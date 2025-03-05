@@ -10,6 +10,7 @@ type Config struct {
 	Env      string
 	Postgres PostgresConfig
 	HTTP     HTTPConfig
+	GRPC     GRPCConfig
 }
 
 type PostgresConfig struct {
@@ -24,6 +25,10 @@ type PostgresConfig struct {
 type HTTPConfig struct {
 	Host string
 	Port string
+}
+
+type GRPCConfig struct {
+	Port int
 }
 
 func LoadConfig(name, fType, path string) (*Config, error) {
