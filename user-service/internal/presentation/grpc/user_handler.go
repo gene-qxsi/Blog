@@ -41,10 +41,10 @@ func (h *UserHandler) GetUsers(ctx context.Context, req *blogv1.Empty) (*blogv1.
 		return nil, fmt.Errorf("ошибка: %s. operation: %s", err.Error(), op)
 	}
 
-	var users []*blogv1.UserEntity
+	var users []*blogv1.GetUserResponse
 	for _, user := range usersReq {
-		user := blogv1.UserEntity{
-			Id:       int32(user.ID()),
+		user := blogv1.GetUserResponse{
+			Id:       int64(user.ID()),
 			Email:    user.Email(),
 			Password: user.Password(),
 		}

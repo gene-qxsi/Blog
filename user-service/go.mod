@@ -3,13 +3,16 @@ module github.com/gene-qxsi/Blog/user-service
 go 1.23.4
 
 require (
-	github.com/gene-qxsi/Blog-api v1.0.1
+	github.com/fatih/color v1.18.0
+	github.com/gene-qxsi/Blog-api v0.0.0
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/viper v1.19.0
 	google.golang.org/grpc v1.71.0
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
+
+replace github.com/gene-qxsi/Blog-api => ../api
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect
@@ -34,6 +37,7 @@ require (
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect

@@ -24,7 +24,7 @@ func RunGRPCServer(config config.Config, hs *Handlers) {
 		log.Fatal("ошибка создания объекта Listener: %w", err)
 	}
 
-	server := grpc.NewServer()
+	server := grpc.NewServer(grpc.UnaryInterceptor(UnaryLogger))
 	blogv1.RegisterUserServer(server, hs.UserHandler)
 	reflection.Register(server)
 
